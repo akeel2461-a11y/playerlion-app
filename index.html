@@ -1,12 +1,107 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Playerlion</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 420px;
+      min-height: 100vh;
+      background: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .lion {
+      font-size: 70px;
+      margin-top: 40px;
+    }
+
+    h1 {
+      margin: 10px 0;
+      font-size: 32px;
+    }
+
+    .welcome {
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .button {
+      width: 100%;
+      padding: 16px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 14px;
+      font-size: 18px;
+      cursor: pointer;
+      background: #eeeeee;
+    }
+
+    .button:active {
+      transform: scale(0.98);
+    }
+
+    .footer {
+      margin-top: 35px;
+      color: #999;
+      font-size: 13px;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>مرحباً بك في Playerlion</h1>
-  <p>هذا هو التطبيق الخاص بالبوت.</p>
+
+  <div class="app">
+
+    <div class="lion">🦁</div>
+
+    <h1>Playerlion</h1>
+
+    <p class="welcome">
+      مرحباً بك في تطبيق البوت
+    </p>
+
+    <button class="button" onclick="showMessage('أهلاً بك في Playerlion 👋')">
+      🏠 الرئيسية
+    </button>
+
+    <button class="button" onclick="showMessage('هذه صفحة الخدمات')">
+      📋 الخدمات
+    </button>
+
+    <button class="button" onclick="showMessage('سيتم إضافة الإعدادات لاحقاً')">
+      ⚙️ الإعدادات
+    </button>
+
+    <p class="footer">
+      Playerlion © 2026
+    </p>
+
+  </div>
+
+  <script>
+    function showMessage(message) {
+      alert(message);
+    }
+  </script>
+
 </body>
 </html>
