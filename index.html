@@ -1,185 +1,295 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Playerlion</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playerlion</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: #f4f6f8;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f4f6f8;
+  display: flex;
+  justify-content: center;
+}
 
-    .app {
-      width: 100%;
-      max-width: 420px;
-      min-height: 100vh;
-      background: white;
-      padding: 30px 20px;
-      text-align: center;
-    }
+.app {
+  width: 100%;
+  max-width: 420px;
+  min-height: 100vh;
+  background: white;
+  padding: 25px 20px;
+  text-align: center;
+}
 
-    .lion {
-      font-size: 70px;
-      margin-top: 40px;
-    }
+.page {
+  display: none;
+}
 
-    h1 {
-      margin: 10px 0;
-      font-size: 32px;
-    }
+.page.active {
+  display: block;
+}
 
-    .welcome {
-      color: #666;
-      margin-bottom: 30px;
-    }
+.lion {
+  font-size: 70px;
+  margin-top: 30px;
+}
 
-    .button {
-      width: 100%;
-      padding: 16px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 14px;
-      font-size: 18px;
-      cursor: pointer;
-      background: #eeeeee;
-    }
+h1 {
+  margin: 10px 0;
+  font-size: 30px;
+}
 
-    .button:active {
-      transform: scale(0.98);
-    }
+.welcome {
+  color: #666;
+  margin-bottom: 25px;
+}
 
-    .service {
-      background: #f4f6f8;
-      border-radius: 14px;
-      padding: 18px;
-      margin: 12px 0;
-      font-size: 18px;
-    }
+.button {
+  width: 100%;
+  padding: 16px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 14px;
+  font-size: 18px;
+  cursor: pointer;
+  background: #eeeeee;
+}
 
-    .back {
-      background: #222;
-      color: white;
-      margin-top: 20px;
-    }
+.button:active,
+.service:active {
+  transform: scale(0.98);
+}
 
-    .footer {
-      margin-top: 35px;
-      color: #999;
-      font-size: 13px;
-    }
+.service {
+  background: #f4f6f8;
+  border-radius: 14px;
+  padding: 18px;
+  margin: 12px 0;
+  font-size: 18px;
+  cursor: pointer;
+}
 
-    .page {
-      display: none;
-    }
+.back {
+  background: #222;
+  color: white;
+  margin-top: 20px;
+}
 
-    .active {
-      display: block;
-    }
-  </style>
+.box {
+  background: #f4f6f8;
+  border-radius: 14px;
+  padding: 20px;
+  margin-top: 20px;
+  color: #555;
+  line-height: 1.8;
+}
+
+.footer {
+  margin-top: 30px;
+  color: #999;
+  font-size: 13px;
+}
+</style>
 </head>
 
 <body>
 
-  <div class="app">
+<div class="app">
 
-    <div id="home" class="page active">
+<!-- الرئيسية -->
+<div id="home" class="page active">
 
-      <div class="lion">🦁</div>
+<div class="lion">🦁</div>
 
-      <h1>Playerlion</h1>
+<h1>Playerlion</h1>
 
-      <p class="welcome">
-        مرحباً بك في تطبيق البوت
-      </p>
+<p class="welcome">
+مرحباً بك في تطبيق البوت
+</p>
 
-      <button class="button" onclick="showPage('home')">
-        🏠 الرئيسية
-      </button>
+<button class="button" onclick="showPage('home')">
+🏠 الرئيسية
+</button>
 
-      <button class="button" onclick="showPage('services')">
-        📋 الخدمات
-      </button>
+<button class="button" onclick="showPage('services')">
+📋 الخدمات
+</button>
 
-      <button class="button" onclick="showPage('settings')">
-        ⚙️ الإعدادات
-      </button>
+<button class="button" onclick="showPage('settings')">
+⚙️ الإعدادات
+</button>
 
-    </div>
+</div>
 
-    <div id="services" class="page">
 
-      <div class="lion">🦁</div>
+<!-- الخدمات -->
+<div id="services" class="page">
 
-      <h1>الخدمات</h1>
+<div class="lion">🦁</div>
 
-      <p class="welcome">
-        اختر الخدمة التي تريدها
-      </p>
+<h1>الخدمات</h1>
 
-      <div class="service">
-        🔎 خدمة البحث
-      </div>
+<p class="welcome">
+اختر الخدمة التي تريدها
+</p>
 
-      <div class="service">
-        🛡️ فحص الحسابات
-      </div>
+<div class="service" onclick="showPage('search')">
+🔎 خدمة البحث
+</div>
 
-      <div class="service">
-        📢 التبليغ
-      </div>
+<div class="service" onclick="showPage('accounts')">
+🛡️ فحص الحسابات
+</div>
 
-      <div class="service">
-        ℹ️ معلومات البوت
-      </div>
+<div class="service" onclick="showPage('report')">
+📢 التبليغ
+</div>
 
-      <button class="button back" onclick="showPage('home')">
-        🔙 رجوع
-      </button>
+<div class="service" onclick="showPage('info')">
+ℹ️ معلومات البوت
+</div>
 
-    </div>
+<button class="button back" onclick="showPage('home')">
+🔙 رجوع
+</button>
 
-    <div id="settings" class="page">
+</div>
 
-      <div class="lion">🦁</div>
 
-      <h1>الإعدادات</h1>
+<!-- البحث -->
+<div id="search" class="page">
 
-      <p class="welcome">
-        سيتم تنظيم الإعدادات لاحقاً
-      </p>
+<div class="lion">🔎</div>
 
-      <button class="button back" onclick="showPage('home')">
-        🔙 رجوع
-      </button>
+<h1>خدمة البحث</h1>
 
-    </div>
+<div class="box">
+هنا ستكون خدمة البحث الخاصة بالبوت.
+<br>
+سيتم إضافة وظيفة البحث لاحقاً.
+</div>
 
-    <p class="footer">
-      Playerlion © 2026
-    </p>
+<button class="button back" onclick="showPage('services')">
+🔙 رجوع للخدمات
+</button>
 
-  </div>
+</div>
 
-  <script>
-    function showPage(page) {
-      document.getElementById("home").classList.remove("active");
-      document.getElementById("services").classList.remove("active");
-      document.getElementById("settings").classList.remove("active");
 
-      document.getElementById(page).classList.add("active");
-    }
-  </script>
+<!-- فحص الحسابات -->
+<div id="accounts" class="page">
+
+<div class="lion">🛡️</div>
+
+<h1>فحص الحسابات</h1>
+
+<div class="box">
+هنا ستكون خدمة فحص الحسابات.
+<br>
+سيتم إضافة وظيفة الفحص لاحقاً.
+</div>
+
+<button class="button back" onclick="showPage('services')">
+🔙 رجوع للخدمات
+</button>
+
+</div>
+
+
+<!-- التبليغ -->
+<div id="report" class="page">
+
+<div class="lion">📢</div>
+
+<h1>التبليغ</h1>
+
+<div class="box">
+هنا ستكون خدمة التبليغ.
+<br>
+سيتم إضافة نموذج التبليغ لاحقاً.
+</div>
+
+<button class="button back" onclick="showPage('services')">
+🔙 رجوع للخدمات
+</button>
+
+</div>
+
+
+<!-- معلومات البوت -->
+<div id="info" class="page">
+
+<div class="lion">ℹ️</div>
+
+<h1>معلومات البوت</h1>
+
+<div class="box">
+<strong>Playerlion</strong>
+<br><br>
+هذا هو تطبيق البوت.
+<br>
+سيتم إضافة معلومات البوت هنا لاحقاً.
+</div>
+
+<button class="button back" onclick="showPage('services')">
+🔙 رجوع للخدمات
+</button>
+
+</div>
+
+
+<!-- الإعدادات -->
+<div id="settings" class="page">
+
+<div class="lion">⚙️</div>
+
+<h1>الإعدادات</h1>
+
+<div class="box">
+سيتم تنظيم الإعدادات لاحقاً.
+</div>
+
+<button class="button back" onclick="showPage('home')">
+🔙 رجوع
+</button>
+
+</div>
+
+
+<p class="footer">
+Playerlion © 2026
+</p>
+
+</div>
+
+
+<script>
+
+function showPage(page) {
+
+const pages = document.querySelectorAll(".page");
+
+pages.forEach(function(item) {
+item.classList.remove("active");
+});
+
+const selectedPage = document.getElementById(page);
+
+if (selectedPage) {
+selectedPage.classList.add("active");
+window.scrollTo(0, 0);
+}
+
+}
+
+</script>
 
 </body>
 </html>
