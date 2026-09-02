@@ -59,10 +59,32 @@
       transform: scale(0.98);
     }
 
+    .service {
+      background: #f4f6f8;
+      border-radius: 14px;
+      padding: 18px;
+      margin: 12px 0;
+      font-size: 18px;
+    }
+
+    .back {
+      background: #222;
+      color: white;
+      margin-top: 20px;
+    }
+
     .footer {
       margin-top: 35px;
       color: #999;
       font-size: 13px;
+    }
+
+    .page {
+      display: none;
+    }
+
+    .active {
+      display: block;
     }
   </style>
 </head>
@@ -71,25 +93,77 @@
 
   <div class="app">
 
-    <div class="lion">🦁</div>
+    <div id="home" class="page active">
 
-    <h1>Playerlion</h1>
+      <div class="lion">🦁</div>
 
-    <p class="welcome">
-      مرحباً بك في تطبيق البوت
-    </p>
+      <h1>Playerlion</h1>
 
-    <button class="button" onclick="showMessage('أهلاً بك في Playerlion 👋')">
-      🏠 الرئيسية
-    </button>
+      <p class="welcome">
+        مرحباً بك في تطبيق البوت
+      </p>
 
-    <button class="button" onclick="showMessage('هذه صفحة الخدمات')">
-      📋 الخدمات
-    </button>
+      <button class="button" onclick="showPage('home')">
+        🏠 الرئيسية
+      </button>
 
-    <button class="button" onclick="showMessage('سيتم إضافة الإعدادات لاحقاً')">
-      ⚙️ الإعدادات
-    </button>
+      <button class="button" onclick="showPage('services')">
+        📋 الخدمات
+      </button>
+
+      <button class="button" onclick="showPage('settings')">
+        ⚙️ الإعدادات
+      </button>
+
+    </div>
+
+    <div id="services" class="page">
+
+      <div class="lion">🦁</div>
+
+      <h1>الخدمات</h1>
+
+      <p class="welcome">
+        اختر الخدمة التي تريدها
+      </p>
+
+      <div class="service">
+        🔎 خدمة البحث
+      </div>
+
+      <div class="service">
+        🛡️ فحص الحسابات
+      </div>
+
+      <div class="service">
+        📢 التبليغ
+      </div>
+
+      <div class="service">
+        ℹ️ معلومات البوت
+      </div>
+
+      <button class="button back" onclick="showPage('home')">
+        🔙 رجوع
+      </button>
+
+    </div>
+
+    <div id="settings" class="page">
+
+      <div class="lion">🦁</div>
+
+      <h1>الإعدادات</h1>
+
+      <p class="welcome">
+        سيتم تنظيم الإعدادات لاحقاً
+      </p>
+
+      <button class="button back" onclick="showPage('home')">
+        🔙 رجوع
+      </button>
+
+    </div>
 
     <p class="footer">
       Playerlion © 2026
@@ -98,8 +172,12 @@
   </div>
 
   <script>
-    function showMessage(message) {
-      alert(message);
+    function showPage(page) {
+      document.getElementById("home").classList.remove("active");
+      document.getElementById("services").classList.remove("active");
+      document.getElementById("settings").classList.remove("active");
+
+      document.getElementById(page).classList.add("active");
     }
   </script>
 
