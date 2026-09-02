@@ -1,15 +1,246 @@
-"lion">🔎</div>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playerlion</title>
 
-<h1>خدمة البحث</h1>
+<style>
+*{
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
 
-<div class="box">
-هنا ستكون خدمة البحث الخاصة بالبوت.
-<br>
-سيتم إضافة وظيفة البحث لاحقاً.
+body{
+  margin:0;
+  background:#f1f5f9;
+  color:#1e293b;
+}
+
+.header{
+  background:#172554;
+  color:white;
+  text-align:center;
+  padding:25px 15px;
+}
+
+.header h1{
+  margin:0;
+  font-size:28px;
+}
+
+.header p{
+  margin:8px 0 0;
+}
+
+.container{
+  max-width:600px;
+  margin:auto;
+  padding:18px;
+}
+
+.card{
+  background:white;
+  border-radius:18px;
+  padding:20px;
+  margin-bottom:15px;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.status{
+  text-align:center;
+  font-size:18px;
+}
+
+.status b{
+  color:#16a34a;
+}
+
+.main-button{
+  width:100%;
+  padding:17px;
+  border:0;
+  border-radius:15px;
+  background:#16a34a;
+  color:white;
+  font-size:19px;
+  font-weight:bold;
+  margin-top:15px;
+}
+
+.menu{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.menu button{
+  border:0;
+  background:white;
+  border-radius:16px;
+  padding:22px 10px;
+  font-size:17px;
+  box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+.section{
+  display:none;
+}
+
+.section.active{
+  display:block;
+}
+
+.back{
+  width:100%;
+  border:0;
+  border-radius:13px;
+  padding:14px;
+  background:#475569;
+  color:white;
+  font-size:16px;
+  margin-top:15px;
+}
+
+.info{
+  line-height:1.9;
+  color:#475569;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>🐾 Playerlion</h1>
+  <p>لوحة التحكم</p>
 </div>
 
-<button class="button back" onclick="showPage('services')">
-🔙 رجوع للخدمات
-</button>
+<div class="container">
+
+  <div id="home" class="section active">
+
+    <div class="card status">
+      حالة النظام:
+      <b id="state">جاهز</b>
+
+      <button class="main-button" onclick="startSystem()">
+        🟢 ابدأ العمل
+      </button>
+    </div>
+
+    <div class="menu">
+
+      <button onclick="show('games')">
+        🎮<br>الألعاب
+      </button>
+
+      <button onclick="show('services')">
+        🛠️<br>الخدمات
+      </button>
+
+      <button onclick="show('users')">
+        👥<br>المستخدمون
+      </button>
+
+      <button onclick="show('stats')">
+        📊<br>الإحصائيات
+      </button>
+
+      <button onclick="show('settings')">
+        ⚙️<br>الإعدادات
+      </button>
+
+      <button onclick="show('about')">
+        ℹ️<br>حول Playerlion
+      </button>
+
+    </div>
+
+  </div>
+
+  <div id="games" class="section">
+    <div class="card">
+      <h2>🎮 الألعاب</h2>
+      <p class="info">هنا ستظهر الألعاب التي نضيفها إلى البوت.</p>
+      <button class="back" onclick="home()">⬅️ رجوع</button>
+    </div>
+  </div>
+
+  <div id="services" class="section">
+    <div class="card">
+      <h2>🛠️ الخدمات</h2>
+      <p class="info">هنا ستظهر الخدمات الخاصة بالبوت.</p>
+      <button class="back" onclick="home()">⬅️ رجوع</button>
+    </div>
+  </div>
+
+  <div id="users" class="section">
+    <div class="card">
+      <h2>👥 المستخدمون</h2>
+      <p class="info">إدارة المستخدمين سنضيفها لاحقًا.</p>
+      <button class="back" onclick="home()">⬅️ رجوع</button>
+    </div>
+  </div>
+
+  <div id="stats" class="section">
+    <div class="card">
+      <h2>📊 الإحصائيات</h2>
+      <p class="info">الإحصائيات ستظهر هنا بعد ربط البوت.</p>
+      <button class="back" onclick="home()">⬅️ رجوع</button>
+    </div>
+  </div>
+
+  <div id="settings" class="section">
+    <div class="card">
+      <h2>⚙️ الإعدادات</h2>
+      <p class="info">إعدادات Playerlion ستكون هنا.</p>
+      <button class="back" onclick="home()">⬅️ رجوع</button>
+    </div>
+  </div>
+
+  <div id="about" class="section">
+    <div class="card">
+      <h2>ℹ️ حول Playerlion</h2>
+      <p class="info">
+        هذه لوحة التحكم الخاصة بالمشروع.
+        سيتم ربطها بالبوت والخدمات لاحقًا.
+      </p>
+      <button class="back" onclick="home()">⬅️ رجوع</button>
+    </div>
+  </div>
 
 </div>
+
+<script>
+
+function startSystem(){
+  document.getElementById("state").textContent="يعمل";
+}
+
+function show(id){
+
+  document.querySelectorAll(".section").forEach(function(x){
+    x.classList.remove("active");
+  });
+
+  document.getElementById(id).classList.add("active");
+
+  window.scrollTo(0,0);
+}
+
+function home(){
+
+  document.querySelectorAll(".section").forEach(function(x){
+    x.classList.remove("active");
+  });
+
+  document.getElementById("home").classList.add("active");
+
+  window.scrollTo(0,0);
+}
+
+</script>
+
+</body>
+</html>
