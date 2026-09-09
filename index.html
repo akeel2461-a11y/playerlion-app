@@ -6,240 +6,162 @@
 <title>Playerlion</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  font-family:Arial,sans-serif;
-}
-
 body{
-  margin:0;
-  background:#f1f5f9;
-  color:#1e293b;
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f6f8;
+    color:#222;
 }
-
-.header{
-  background:#172554;
-  color:white;
-  text-align:center;
-  padding:25px 15px;
+header{
+    background:#111827;
+    color:white;
+    padding:18px;
+    text-align:center;
 }
-
-.header h1{
-  margin:0;
-  font-size:28px;
-}
-
-.header p{
-  margin:8px 0 0;
-}
-
 .container{
-  max-width:600px;
-  margin:auto;
-  padding:18px;
+    max-width:700px;
+    margin:auto;
+    padding:20px;
 }
-
 .card{
-  background:white;
-  border-radius:18px;
-  padding:20px;
-  margin-bottom:15px;
-  box-shadow:0 3px 12px rgba(0,0,0,.08);
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:15px;
+    box-shadow:0 3px 10px #0001;
 }
-
-.status{
-  text-align:center;
-  font-size:18px;
+button{
+    width:100%;
+    padding:15px;
+    margin:7px 0;
+    border:0;
+    border-radius:10px;
+    font-size:17px;
+    cursor:pointer;
 }
-
-.status b{
-  color:#16a34a;
+.start{
+    background:#16a34a;
+    color:white;
 }
-
-.main-button{
-  width:100%;
-  padding:17px;
-  border:0;
-  border-radius:15px;
-  background:#16a34a;
-  color:white;
-  font-size:19px;
-  font-weight:bold;
-  margin-top:15px;
-}
-
 .menu{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
+    background:#e5e7eb;
 }
-
-.menu button{
-  border:0;
-  background:white;
-  border-radius:16px;
-  padding:22px 10px;
-  font-size:17px;
-  box-shadow:0 3px 10px rgba(0,0,0,.08);
-}
-
 .section{
-  display:none;
+    display:none;
 }
-
 .section.active{
-  display:block;
+    display:block;
 }
-
+.status{
+    text-align:center;
+    font-weight:bold;
+    padding:10px;
+}
 .back{
-  width:100%;
-  border:0;
-  border-radius:13px;
-  padding:14px;
-  background:#475569;
-  color:white;
-  font-size:16px;
-  margin-top:15px;
-}
-
-.info{
-  line-height:1.9;
-  color:#475569;
+    background:#374151;
+    color:white;
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">
-  <h1>🐾 Playerlion</h1>
-  <p>لوحة التحكم</p>
-</div>
+<header>
+    <h1>🐾 Playerlion</h1>
+    <p>لوحة التحكم</p>
+</header>
 
 <div class="container">
 
-  <div id="home" class="section active">
-
-    <div class="card status">
-      حالة النظام:
-      <b id="state">جاهز</b>
-
-      <button class="main-button" onclick="startSystem()">
-        🟢 ابدأ العمل
-      </button>
-    </div>
-
-    <div class="menu">
-
-      <button onclick="show('games')">
-        🎮<br>الألعاب
-      </button>
-
-      <button onclick="show('services')">
-        🛠️<br>الخدمات
-      </button>
-
-      <button onclick="show('users')">
-        👥<br>المستخدمون
-      </button>
-
-      <button onclick="show('stats')">
-        📊<br>الإحصائيات
-      </button>
-
-      <button onclick="show('settings')">
-        ⚙️<br>الإعدادات
-      </button>
-
-      <button onclick="show('about')">
-        ℹ️<br>حول Playerlion
-      </button>
-
-    </div>
-
-  </div>
-
-  <div id="games" class="section">
+<div id="home" class="section active">
     <div class="card">
-      <h2>🎮 الألعاب</h2>
-      <p class="info">هنا ستظهر الألعاب التي نضيفها إلى البوت.</p>
-      <button class="back" onclick="home()">⬅️ رجوع</button>
+        <h2>مرحباً بك 👋</h2>
+        <div id="status" class="status">🔴 متوقف</div>
+        <button class="start" onclick="startBot()">🟢 ابدأ البوت</button>
     </div>
-  </div>
 
-  <div id="services" class="section">
     <div class="card">
-      <h2>🛠️ الخدمات</h2>
-      <p class="info">هنا ستظهر الخدمات الخاصة بالبوت.</p>
-      <button class="back" onclick="home()">⬅️ رجوع</button>
+        <button class="menu" onclick="show('games')">🎮 الألعاب</button>
+        <button class="menu" onclick="show('services')">🛠️ الخدمات</button>
+        <button class="menu" onclick="show('users')">👥 المستخدمون</button>
+        <button class="menu" onclick="show('stats')">📊 الإحصائيات</button>
+        <button class="menu" onclick="show('settings')">⚙️ الإعدادات</button>
+        <button class="menu" onclick="show('about')">ℹ️ حول Playerlion</button>
     </div>
-  </div>
+</div>
 
-  <div id="users" class="section">
+<div id="games" class="section">
     <div class="card">
-      <h2>👥 المستخدمون</h2>
-      <p class="info">إدارة المستخدمين سنضيفها لاحقًا.</p>
-      <button class="back" onclick="home()">⬅️ رجوع</button>
+        <h2>🎮 الألعاب</h2>
+        <p>قسم الألعاب جاهز للإضافة.</p>
+        <button onclick="alert('سيتم إضافة الألعاب هنا لاحقاً')">إضافة لعبة</button>
+        <button class="back" onclick="home()">رجوع</button>
     </div>
-  </div>
+</div>
 
-  <div id="stats" class="section">
+<div id="services" class="section">
     <div class="card">
-      <h2>📊 الإحصائيات</h2>
-      <p class="info">الإحصائيات ستظهر هنا بعد ربط البوت.</p>
-      <button class="back" onclick="home()">⬅️ رجوع</button>
+        <h2>🛠️ الخدمات</h2>
+        <p>قسم الخدمات جاهز.</p>
+        <button onclick="alert('الخدمات ستكون متاحة بعد ربط البوت')">عرض الخدمات</button>
+        <button class="back" onclick="home()">رجوع</button>
     </div>
-  </div>
+</div>
 
-  <div id="settings" class="section">
+<div id="users" class="section">
     <div class="card">
-      <h2>⚙️ الإعدادات</h2>
-      <p class="info">إعدادات Playerlion ستكون هنا.</p>
-      <button class="back" onclick="home()">⬅️ رجوع</button>
+        <h2>👥 المستخدمون</h2>
+        <p>إدارة المستخدمين.</p>
+        <button onclick="alert('سيتم ربط المستخدمين مع البوت')">إدارة المستخدمين</button>
+        <button class="back" onclick="home()">رجوع</button>
     </div>
-  </div>
+</div>
 
-  <div id="about" class="section">
+<div id="stats" class="section">
     <div class="card">
-      <h2>ℹ️ حول Playerlion</h2>
-      <p class="info">
-        هذه لوحة التحكم الخاصة بالمشروع.
-        سيتم ربطها بالبوت والخدمات لاحقًا.
-      </p>
-      <button class="back" onclick="home()">⬅️ رجوع</button>
+        <h2>📊 الإحصائيات</h2>
+        <p>عدد المستخدمين: 0</p>
+        <p>عدد الألعاب: 0</p>
+        <p>حالة البوت: جاهز</p>
+        <button class="back" onclick="home()">رجوع</button>
     </div>
-  </div>
+</div>
+
+<div id="settings" class="section">
+    <div class="card">
+        <h2>⚙️ الإعدادات</h2>
+        <p>إعدادات Playerlion.</p>
+        <button onclick="alert('الإعدادات ستتم إضافتها لاحقاً')">فتح الإعدادات</button>
+        <button class="back" onclick="home()">رجوع</button>
+    </div>
+</div>
+
+<div id="about" class="section">
+    <div class="card">
+        <h2>ℹ️ حول Playerlion</h2>
+        <p>هذه لوحة التحكم الخاصة بمشروع Playerlion.</p>
+        <p>يمكن تطويرها وربطها بالبوت لاحقاً.</p>
+        <button class="back" onclick="home()">رجوع</button>
+    </div>
+</div>
 
 </div>
 
 <script>
-
-function startSystem(){
-  document.getElementById("state").textContent="يعمل";
+function startBot(){
+    document.getElementById("status").innerText="🟢 البوت يعمل";
 }
 
 function show(id){
-
-  document.querySelectorAll(".section").forEach(function(x){
-    x.classList.remove("active");
-  });
-
-  document.getElementById(id).classList.add("active");
-
-  window.scrollTo(0,0);
+    document.querySelectorAll(".section").forEach(function(section){
+        section.classList.remove("active");
+    });
+    document.getElementById(id).classList.add("active");
 }
 
 function home(){
-
-  document.querySelectorAll(".section").forEach(function(x){
-    x.classList.remove("active");
-  });
-
-  document.getElementById("home").classList.add("active");
-
-  window.scrollTo(0,0);
+    show("home");
 }
-
 </script>
 
 </body>
