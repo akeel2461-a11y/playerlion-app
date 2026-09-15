@@ -6,60 +6,163 @@
 <title>Playerlion</title>
 
 <style>
+*{box-sizing:border-box}
+
 body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#f4f6f8;
-    color:#222;
+margin:0;
+font-family:Arial,sans-serif;
+background:#f3f4f6;
+color:#111827;
 }
+
 header{
-    background:#111827;
-    color:white;
-    padding:18px;
-    text-align:center;
+background:#111827;
+color:white;
+text-align:center;
+padding:22px 15px;
 }
+
+header h1{margin:0;font-size:30px}
+header p{margin:7px 0 0}
+
 .container{
-    max-width:700px;
-    margin:auto;
-    padding:20px;
+max-width:700px;
+margin:auto;
+padding:20px;
 }
+
 .card{
-    background:white;
-    border-radius:15px;
-    padding:20px;
-    margin-bottom:15px;
-    box-shadow:0 3px 10px #0001;
+background:white;
+padding:20px;
+margin-bottom:16px;
+border-radius:16px;
+box-shadow:0 3px 12px #0001;
 }
+
 button{
-    width:100%;
-    padding:15px;
-    margin:7px 0;
-    border:0;
-    border-radius:10px;
-    font-size:17px;
-    cursor:pointer;
+width:100%;
+padding:15px;
+margin:7px 0;
+border:0;
+border-radius:11px;
+font-size:17px;
+cursor:pointer;
 }
+
 .start{
-    background:#16a34a;
-    color:white;
+background:#16a34a;
+color:white;
 }
+
 .menu{
-    background:#e5e7eb;
+background:#e5e7eb;
 }
-.section{
-    display:none;
+
+.game{
+background:#ecfdf5;
+border:2px solid #16a34a;
+color:#166534;
 }
-.section.active{
-    display:block;
+
+.trade{
+background:#eff6ff;
+border:2px solid #2563eb;
+color:#1d4ed8;
 }
-.status{
-    text-align:center;
-    font-weight:bold;
-    padding:10px;
+
+.buy{
+background:#16a34a;
+color:white;
 }
+
+.sell{
+background:#dc2626;
+color:white;
+}
+
 .back{
-    background:#374151;
-    color:white;
+background:#374151;
+color:white;
+}
+
+.section{
+display:none;
+}
+
+.section.active{
+display:block;
+}
+
+.status{
+text-align:center;
+font-weight:bold;
+padding:12px;
+}
+
+.balance{
+background:#f9fafb;
+padding:15px;
+border-radius:10px;
+text-align:center;
+font-size:20px;
+font-weight:bold;
+margin:15px 0;
+}
+
+.price{
+text-align:center;
+font-size:30px;
+font-weight:bold;
+margin:20px 0;
+}
+
+select{
+width:100%;
+padding:14px;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:16px;
+background:white;
+}
+
+.aviator{
+background:#111827;
+color:white;
+border-radius:15px;
+padding:25px 15px;
+text-align:center;
+margin:15px 0;
+}
+
+.multiplier{
+font-size:48px;
+font-weight:bold;
+color:#22c55e;
+margin:25px 0;
+}
+
+.round{
+color:#d1d5db;
+}
+
+.result{
+background:#f9fafb;
+padding:14px;
+border-radius:10px;
+margin-top:12px;
+text-align:center;
+}
+
+.icon{
+font-size:35px;
+display:block;
+margin-bottom:5px;
+}
+
+.demo{
+text-align:center;
+color:#6b7280;
+font-size:14px;
 }
 </style>
 </head>
@@ -67,46 +170,433 @@ button{
 <body>
 
 <header>
-    <h1>🐾 Playerlion</h1>
-    <p>لوحة تحكم</p>
+<h1>🐾 Playerlion</h1>
+<p>الألعاب والتداول</p>
 </header>
 
 <div class="container">
 
-<div id="home" class="section active">
-    <div class="card">
-        <h2>مرحباً بك 👋</h2>
-        <div id="status" class="status">🔴 متوقف</div>
-        <button class="start" onclick="startBot()">🟢 ابدأ البوت</button>
-    </div>
+<!-- الصفحة الرئيسية -->
 
-    <div class="card">
-        <button class="menu" onclick="show('games')">🎮 الألعاب</button>
-        <button class="menu" onclick="show('services')">🛠️ الخدمات</button>
-        <button class="menu" onclick="show('users')">👥 المستخدمون</button>
-        <button class="menu" onclick="show('stats')">📊 الإحصائيات</button>
-        <button class="menu" onclick="show('settings')">⚙️ الإعدادات</button>
-        <button class="menu" onclick="show('about')">ℹ️ حول Playerlion</button>
-    </div>
+<div id="home" class="section active">
+
+<div class="card">
+
+<h2>مرحباً بك 👋</h2>
+
+<div id="status" class="status">
+🔴 البوت متوقف
 </div>
+
+<button class="start" onclick="startBot()">
+🟢 ابدأ البوت
+</button>
+
+</div>
+
+<div class="card">
+
+<button class="menu" onclick="show('games')">
+🎮 الألعاب
+</button>
+
+<button class="menu" onclick="show('trading')">
+📈 التداول
+</button>
+
+</div>
+
+</div>
+
+
+<!-- الألعاب -->
 
 <div id="games" class="section">
-    <div class="card">
-        <h2>🎮 الألعاب</h2>
-        <p>قسم الألعاب جاهز للإضافة.</p>
-        <button onclick="alert('سيتم إضافة الألعاب هنا لاحقاً')">إضافة لعبة</button>
-        <button class="back" onclick="home()">رجوع</button>
-    </div>
+
+<div class="card">
+
+<h2>🎮 الألعاب</h2>
+
+<p>اختر اللعبة:</p>
+
+<button class="game" onclick="show('aviator')">
+<span class="icon">✈️</span>
+Aviator
+</button>
+
+<button class="game" onclick="show('luck')">
+<span class="icon">🎰</span>
+لعبة الحظ
+</button>
+
+<button class="game" onclick="show('challenge')">
+<span class="icon">🎯</span>
+لعبة التحدي
+</button>
+
+<button class="back" onclick="home()">
+↩️ رجوع
+</button>
+
 </div>
 
-<div id="services" class="section">
-    <div class="card">
-        <h2>🛠️ الخدمات</h2>
-        <p>قسم الخدمات جاهز.</p>
-        <button onclick="alert('الخدمات ستكون متاحة بعد ربط البوت')">عرض الخدمات</button>
-        <button class="back" onclick="home()">رجوع</button>
-    </div>
 </div>
 
-<div id="users" class="section">
-    <div class="card">
+
+<!-- AVIATOR -->
+
+<div id="aviator" class="section">
+
+<div class="card">
+
+<h2>✈️ Aviator</h2>
+
+<p class="demo">
+محاكاة تجريبية فقط
+</p>
+
+<div class="aviator">
+
+<div class="round" id="round">
+الجولة 1
+</div>
+
+<div class="multiplier" id="multiplier">
+1.00x
+</div>
+
+<div id="aviatorMessage">
+اضغط بدء الجولة
+</div>
+
+</div>
+
+<button class="start" onclick="startAviator()">
+🚀 بدء الجولة
+</button>
+
+<button class="sell" onclick="stopAviator()">
+🛑 إيقاف تجريبي
+</button>
+
+<div class="result" id="aviatorResult">
+لا توجد نتيجة حالياً
+</div>
+
+<button class="back" onclick="show('games')">
+↩️ رجوع للألعاب
+</button>
+
+</div>
+
+</div>
+
+
+<!-- لعبة الحظ -->
+
+<div id="luck" class="section">
+
+<div class="card">
+
+<h2>🎰 لعبة الحظ</h2>
+
+<p>لعبة تجريبية فقط.</p>
+
+<button class="game" onclick="playLuck()">
+🎲 جرّب الحظ
+</button>
+
+<div class="result" id="luckResult">
+اضغط الزر للبدء
+</div>
+
+<button class="back" onclick="show('games')">
+↩️ رجوع للألعاب
+</button>
+
+</div>
+
+</div>
+
+
+<!-- لعبة التحدي -->
+
+<div id="challenge" class="section">
+
+<div class="card">
+
+<h2>🎯 لعبة التحدي</h2>
+
+<p>كم يساوي 5 + 5 ؟</p>
+
+<button class="game" onclick="challengeAnswer(10)">
+10
+</button>
+
+<button class="game" onclick="challengeAnswer(8)">
+8
+</button>
+
+<button class="game" onclick="challengeAnswer(15)">
+15
+</button>
+
+<div class="result" id="challengeResult">
+بانتظار الإجابة
+</div>
+
+<button class="back" onclick="show('games')">
+↩️ رجوع للألعاب
+</button>
+
+</div>
+
+</div>
+
+
+<!-- التداول -->
+
+<div id="trading" class="section">
+
+<div class="card">
+
+<h2>📈 التداول التجريبي</h2>
+
+<div class="balance">
+💰 الرصيد التجريبي:
+<span id="balance">10000</span> $
+</div>
+
+<label>اختر الأصل:</label>
+
+<select id="asset" onchange="changeAsset()">
+
+<option value="EURUSD">EUR/USD</option>
+<option value="GBPUSD">GBP/USD</option>
+<option value="BTCUSD">BTC/USD</option>
+<option value="XAUUSD">Gold / XAU</option>
+
+</select>
+
+<div class="price" id="price">
+1.0850
+</div>
+
+<button class="buy" onclick="buyTrade()">
+🟢 شراء تجريبي
+</button>
+
+<button class="sell" onclick="sellTrade()">
+🔴 بيع تجريبي
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>📋 صفقاتي</h2>
+
+<div class="result" id="trades">
+لا توجد صفقات تجريبية حالياً.
+</div>
+
+</div>
+
+<button class="back" onclick="home()">
+↩️ رجوع
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+let balance = 10000;
+let aviatorTimer = null;
+let multiplier = 1;
+let round = 1;
+
+const prices = {
+EURUSD:"1.0850",
+GBPUSD:"1.2740",
+BTCUSD:"65000",
+XAUUSD:"2650"
+};
+
+
+function startBot(){
+
+document.getElementById("status").innerText =
+"🟢 البوت يعمل حالياً";
+
+}
+
+
+function show(id){
+
+document.querySelectorAll(".section").forEach(function(section){
+
+section.classList.remove("active");
+
+});
+
+document.getElementById(id).classList.add("active");
+
+window.scrollTo(0,0);
+
+}
+
+
+function home(){
+
+show("home");
+
+}
+
+
+/* AVIATOR */
+
+function startAviator(){
+
+clearInterval(aviatorTimer);
+
+multiplier = 1;
+
+document.getElementById("multiplier").innerText =
+"1.00x";
+
+document.getElementById("aviatorMessage").innerText =
+"✈️ الطائرة تطير...";
+
+document.getElementById("aviatorResult").innerText =
+"الجولة جارية";
+
+aviatorTimer = setInterval(function(){
+
+multiplier += 0.05;
+
+document.getElementById("multiplier").innerText =
+multiplier.toFixed(2) + "x";
+
+if(multiplier >= 5){
+
+stopAviator();
+
+}
+
+},300);
+
+}
+
+
+function stopAviator(){
+
+clearInterval(aviatorTimer);
+
+document.getElementById("aviatorMessage").innerText =
+"🛑 انتهت الجولة";
+
+document.getElementById("aviatorResult").innerText =
+"نتيجة الجولة: " +
+multiplier.toFixed(2) +
+"x";
+
+document.getElementById("round").innerText =
+"الجولة " + round;
+
+round++;
+
+}
+
+
+/* الحظ */
+
+function playLuck(){
+
+let number =
+Math.floor(Math.random()*3)+1;
+
+if(number === 1){
+
+document.getElementById("luckResult").innerText =
+"🎉 نتيجة تجريبية: فزت!";
+
+}else{
+
+document.getElementById("luckResult").innerText =
+"😅 نتيجة تجريبية: حاول مرة أخرى";
+
+}
+
+}
+
+
+/* التحدي */
+
+function challengeAnswer(answer){
+
+if(answer === 10){
+
+document.getElementById("challengeResult").innerText =
+"🎉 إجابة صحيحة!";
+
+}else{
+
+document.getElementById("challengeResult").innerText =
+"❌ إجابة خاطئة";
+
+}
+
+}
+
+
+/* التداول */
+
+function changeAsset(){
+
+let asset =
+document.getElementById("asset").value;
+
+document.getElementById("price").innerText =
+prices[asset];
+
+}
+
+
+function buyTrade(){
+
+let asset =
+document.getElementById("asset").value;
+
+let price =
+prices[asset];
+
+document.getElementById("trades").innerHTML =
+"🟢 شراء تجريبي<br>" +
+"الأصل: " + asset + "<br>" +
+"السعر: " + price;
+
+}
+
+
+function sellTrade(){
+
+let asset =
+document.getElementById("asset").value;
+
+let price =
+prices[asset];
+
+document.getElementById("trades").innerHTML =
+"🔴 بيع تجريبي<br>" +
+"الأصل: " + asset + "<br>" +
+"السعر: " + price;
+
+}
+
+</script>
+
+</body>
+</html>
